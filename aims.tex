@@ -25,23 +25,20 @@ highly heterogenous disease with several subtypes that have distinct genetic and
 epigenetic profiles. Using their cfDNA genetic and epigenetic profiles, we apply 
 machine learning models to predict breast cancer subtypes and infer 
 regulatory mechanisms underlying these subtypes.
-\section*{Determine the association of the cfDNA methylome and cancer subtypes}
+\section*{Aim 1: Determine the association of the cfDNA methylome and cancer subtypes}
 Recent studies have shown that methylation patterns are highly indicative of cell type of origin.\cite{spector_methylome_2023} 
 By analyzing the methylation patterns of cfDNA, we can infer the tissue of origin of the tumor and apply this towards subtyping a tumor.
 
-\begin{enumerate}
-	\item \textbf{Apply cfMethyl-seq \cite{stackpole_cost-effective_2022} and whole-genome sequencing to a breast cancer cohort to capture genome-wide methylation profiles of CpG-rich regions and mutation profiles.} We collect methylation data for both tumor and healthy samples to identify tumor-specific methylation changes. A cohort of 2000 breast cancer patients with various subtypes will be used.
-	\item \textbf{Prediction of cancer subtypes based on methylation and mutation features.}
+	\textbf{1A: Apply cfMethyl-seq \cite{stackpole_cost-effective_2022} and whole-genome sequencing to a breast cancer cohort to capture genome-wide methylation profiles of CpG-rich regions and mutation profiles.} We collect methylation data for both tumor and healthy samples to identify tumor-specific methylation changes. A cohort of 2000 breast cancer patients with various subtypes will be used.
+	\textbf{1B: Prediction of cancer subtypes based on methylation and mutation features.}
 		Using the approach of GEMINI, we can calculate tumor-normal matched methylation scores over nonoverlapping genomic bins. We then will evaluate basic machine learning models in predicting cancer subtypes based on GEMINI-methylation features, GEMINI-mutation features, and a combination of both.
-\end{enumerate}
 
-\section*{Predicting tumor transcriptome through cfDNA-derived mutations and histone modification signals in promoter and enhancer regions}
+\section*{Aim 2: Predicting tumor transcriptome through cfDNA-derived mutations and histone modification signals in promoter and enhancer regions}
 Different cancer subtypes have distinct gene expression profiles. Combining cfDNA histone modification data, which is associated with gene expression programs of their cells of origin \cite{sadeh_chip-seq_2021, trier_maansson_cell-free_2023}, with mutation profiles can provide a more comprehensive view of the gene expression landscape in a tumor.
-\begin{enumerate}
-	\item \textbf{Collect cfCHiP-seq \cite{baca_liquid_2023} and sequence a breast cancer cohort to generate histone modification signals and mutation profiles.} We will use a cohort of 2000 patients with various cancer types and subtypes to generate H3K4me3 and H3K27ac signals. H3K4me3 and H3K27ac are histone modifications that are associated with promoters and enhancers, respectively.
-	\item \textbf{Collect transcriptome data for tumor samples in the cohort.} We will collect RNA-seq data for the tumor samples in the cohort to generate gene expression profiles.
-	\item \textbf{Build and evaluate machine learning models to predict gene expression profiles based on GEMINI-mutation features, H3K4me3 signals, and H3K27ac signals.} We will evaluate the performance of basic machine learning models in predicting gene expression profiles based on GEMINI-mutation features, H3K4me3 signals, and H3K27ac signals. 
-\end{enumerate}
+
+	\textbf{Collect cfCHiP-seq \cite{baca_liquid_2023} and sequence a breast cancer cohort to generate histone modification signals and mutation profiles.} We will use a cohort of 2000 patients with various cancer types and subtypes to generate H3K4me3 and H3K27ac signals. H3K4me3 and H3K27ac are histone modifications that are associated with promoters and enhancers, respectively.
+	\textbf{Collect transcriptome data for tumor samples in the cohort.} We will collect RNA-seq data for the tumor samples in the cohort to generate gene expression profiles.
+	\textbf{Build and evaluate machine learning models to predict gene expression profiles based on GEMINI-mutation features, H3K4me3 signals, and H3K27ac signals.} We will evaluate the performance of basic machine learning models in predicting gene expression profiles based on GEMINI-mutation features, H3K4me3 signals, and H3K27ac signals. 
 
 The proposed approach will provide a comprehensive view of the relationship between somatic mutations and regulatory properties of DNA, specifically methylation patterns and histone modifications. This will enable the non-invasive subtyping of cancer based on cfDNA data, providing insights into the regulatory mechanisms underlying cancer subtypes and informing the development of targeted therapies.
 
