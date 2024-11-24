@@ -1,0 +1,182 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc} % Allows UTF-8 encoding
+\usepackage{amsmath}        % Useful for math symbols and environments
+\usepackage{geometry}       % Allows to set the page dimensions
+\geometry{margin=0.5in}       % Set all margins to 1 inch
+
+% \title{Connecting the 3D landscape of cell-free DNA (cfDNA) with its somatic mutations for the non-invasive subtyping of cancer}
+\title{}
+\author{}
+\date{}
+
+\begin{document}
+\pagenumbering{gobble}
+% \maketitle
+\vspace{-1cm}
+
+\noindent Cell-free DNA, or cfDNA, refers to fragmented DNA molecules found circulating freely in the bloodstream or other bodily fluids. 
+Sequencing cfDNA molecules enables the non-invasive detection of cancer by identifying tumor-specific genetic mutations, such as through the use of GEMINI (GEnome-wide Mutational Incidence for Non-Invasive detection of cancer). \cite{bruhm_single-molecule_2023}
+To better understand tumor mechanisms and subtypes, it is important to explore the relationship between somatic mutations and gene regulation in tumor versus healthy cells. Analyzing cfDNA methylation and histone modification patterns can help uncover this relationship. \cite{penny_chromatin-_2024} \\
+In the proposed study, we seek to connect the 3D landscape of cfDNA with its somatic mutations by analyzing matched genetic, methylation, and histone modification data. 
+Mutations are limited in that they cannot capture the tissue of origin, while epigenetic features overcome this limitation and have been shown to be stereotyped between tissues and higher in number of alterations compared to mutations. \cite{penny_chromatin-_2024} 
+We specifically collect data from breast cancer patients, as breast cancer is a 
+highly heterogenous disease with several subtypes that have distinct genetic and 
+epigenetic profiles. Using their cfDNA genetic and epigenetic profiles, we apply 
+machine learning models to predict breast cancer subtypes and infer 
+regulatory mechanisms underlying these subtypes.
+\section*{Determine the association of the cfDNA methylome and cancer subtypes}
+Recent studies have shown that methylation patterns are highly indicative of cell type of origin.\cite{spector_methylome_2023} 
+By analyzing the methylation patterns of cfDNA, we can infer the tissue of origin of the tumor and apply this towards subtyping a tumor.
+
+\begin{enumerate}
+	\item \textbf{Apply cfMethyl-seq \cite{stackpole_cost-effective_2022} and whole-genome sequencing to a breast cancer cohort to capture genome-wide methylation profiles of CpG-rich regions and mutation profiles.} We collect methylation data for both tumor and healthy samples to identify tumor-specific methylation changes. A cohort of 2000 breast cancer patients with various subtypes will be used.
+	\item \textbf{Extract GEMINI-methylation features by comparing hyper-methylated regions in tumor vs. normal samples and compare with GEMINI mutation profiles.} Using the approach of GEMINI, we can calculate tumor-normal matched methylation scores over nonoverlapping genomic bins. We then will evaluate basic machine learning models in predicting cancer subtypes based on GEMINI-methylation features, GEMINI-mutation features, and a combination of both.
+\end{enumerate}
+
+\section*{Predicting tumor transcriptome through cfDNA-derived mutations and histone modification signals in promoter and enhancer regions}
+Different cancer subtypes have distinct gene expression profiles. Combining cfDNA histone modification data, which is associated with gene expression programs of their cells of origin \cite{sadeh_chip-seq_2021, trier_maansson_cell-free_2023}, with mutation profiles can provide a more comprehensive view of the gene expression landscape in a tumor.
+\begin{enumerate}
+	\item \textbf{Collect cfCHiP-seq \cite{baca_liquid_2023} and sequence a breast cancer cohort to generate histone modification signals and mutation profiles.} We will use a cohort of 2000 patients with various cancer types and subtypes to generate H3K4me3 and H3K27ac signals. H3K4me3 and H3K27ac are histone modifications that are associated with promoters and enhancers, respectively.
+	\item \textbf{Collect transcriptome data for tumor samples in the cohort.} We will collect RNA-seq data for the tumor samples in the cohort to generate gene expression profiles.
+	\item \textbf{Build and evaluate machine learning models to predict gene expression profiles based on GEMINI-mutation features, H3K4me3 signals, and H3K27ac signals.} We will evaluate the performance of basic machine learning models in predicting gene expression profiles based on GEMINI-mutation features, H3K4me3 signals, and H3K27ac signals. 
+\end{enumerate}
+
+The proposed approach will provide a comprehensive view of the relationship between somatic mutations and regulatory properties of DNA, specifically methylation patterns and histone modifications. This will enable the non-invasive subtyping of cancer based on cfDNA data, providing insights into the regulatory mechanisms underlying cancer subtypes and informing the development of targeted therapies.
+
+\newpage
+\section*{Significance}
+\textbf{Paired genetic and epigenetic data for non-invasive cancer subtyping:} The proposed approach will provide a comprehensive view of the relationship between somatic mutations and regulatory properties of DNA, specifically methylation patterns and histone modifications. While many studies have focused on either genetic or epigenetic cfDNA samples, there is largely a lack of studies that utilize matched genetic and epigenetic data for the same samples. Using enriched cfDNA samples, we can generate paired genetic and epigenetic data that will help understand the correspondence between genetic mutations and the 3D landscape of DNA. This will help improve our ability in several cancer-related prediction tasks, such as predicting tumor behavior, tumor growth, therapy response, and metastatic potential. The proposed approach may also motivate further work in combining other omes of cfDNA, such as fragmentomics and nucleosomics.  \\
+\textbf{Identification of significant regulatory regions:} Regulatory regions are 
+important for understanding driver mutations and gene expression programs in cancer.
+Profiling cfDNA for histone modifications and methylation patterns will bring us 
+closer to identifying the regulatory patterns in a tumor, as genetic mutations alone
+do not provide a complete picture of the regulatory landscape. \\
+\textbf{More granular subtyping for improved personalized medicine:}
+While two different subtypes of cancer may share the same genetic mutation profiles,
+they may have distinct transcriptome and proteome profiles.
+By incorporating methylation and histone modification data, we may be able to
+distinguish more granular subtype differences that are not immediately apparent
+in genetic mutation profiles alone. 
+Identifying these differences can help in the development of more targeted therapies.
+\textbf{Advancing non-invasive liquid biopsy diagnostics:} 
+The proposed approach will revolutionize cancer diagnostics by enabling the
+classification of a patient's subtype through a fast and non-invasive blood test.
+For a heterogeneous cancers like breast cancer, this will be particularly impactful
+as it will allow for more targeted and personalized treatment plans. 
+Current diagnosis methods often rely on invasive tissue biopsies, 
+which may not be feasible for all patients due to the risks associated with
+surgery and the difficulty in obtaining tissue samples from certain parts of the body.
+cfMethyl-seq and cfChIP-seq not only offer non-invasive alternatives for arriving
+at similar diagnostic conclusions, but are also cost-effective and scalable.
+\textbf{}
+
+\newpage
+\section*{Aim 1: Determine the association of the cfDNA methylome and cancer subtypes}
+\subsection*{Aim 1A: Apply cfMethyl-seq to a breast cancer cohort to capture genome-wide methylation profiles of CpG-rich regions and mutation profiles}
+\subsubsection*{Rationale}
+Breast cancer is highly heterogenous, where epigenetic changes, such as methylation, 
+play a critical role in tumor development, progression, and subtype differentiation.
+cfMethyl-seq offers a non-invasive way to profile genome-wide methylation patterns in
+circulating tumor DNA. Using this method allows to simultaneously acquire genetic
+and methylation signals in a single workflow.
+Detailed mutation and methylation profiles will help identify genetic and epigenetic biomarkers associated with each cancer subtype.
+
+\subsubsection*{Methods}
+\textbf{Sequencing a 2000 patient breast cancer cohort:}
+We will select a cohort of 2000 breast cancer patients spanning the four major subtypes: Luminal A, Luminal B, HER2-enriched, and Triple-negative. For each patient, we 
+will draw blood samples and extract cfDNA using QIAamp Circulating Nucleic Acid Kit,
+a protocol shown to have high yield and quality of cfDNA. We will then tag each cfDNA molecule with a unique molecule identifier (UMI) to match corresponding cfMethyl-seq data with WGS data. 
+Using ichorCNA, we will then estimate the tumor fraction in each sample and filter out samples with low tumor fraction. 
+We also validate the concentration and quality of cfDNA using Bioanalyzer 2100.
+Samples are then split for cfMethyl-seq and next-generation whole-genome sequencing. 
+Standard library preparation protocols are used for both assays. 
+\medskip \\ 
+\textbf{Generation of GEMINI-methylation and GEMINI-mutation features:}
+We apply the GEMINI method to calculated tumor-normal matched methylation and mutation
+scores over nonoverlapping genomic bins.
+The generation of methylation and mutation features is defined as:
+\begin{equation}
+	M_{i} = \frac{\sum{y^{T}_{ij}}}{\sum{x^{T}_{ij}}} - 
+	\frac{\sum{y^{N}_{ij}}}{\sum{x^{N}_{ij}}},
+	\quad
+	G_{i} = \frac{\sum{z^{T}_{ij}}}{\sum{x^{T}_{ij}}} -
+	\frac{\sum{z^{N}_{ij}}}{\sum{x^{N}_{ij}}}
+\end{equation}
+where $M_{i}$ and $G_{i}$ are the methylation and mutation scores for bin $i$, respectively. $y^{T}_{ij}$ and $y^{N}_{ij}$ are the number of methylated reads in tumor and normal samples, respectively, for bin $i$. $x^{T}_{ij}$ and $x^{N}_{ij}$ are the total number of reads in tumor and normal samples, respectively, for bin $i$. $z^{T}_{ij}$ and $z^{N}_{ij}$ are the number of mutations in tumor and normal samples, respectively, for bin $i$. cfMethyl-seq only captures CpG-rich regions, thus most of the bins 
+may not have any methylation signal.
+Regardless, having the same binned representation for both methylation and mutation data allows for direct comparison between the two modalities.
+
+\subsection*{Aim 1B: Prediction of cancer subtypes based on methylation and mutation features:}
+\subsubsection*{Rationale}
+Following the generation of GEMINI-methylation and GEMINI-mutation features,
+we are able to determine the association of the cfDNA methylome, genetic mutations,
+and breast cancer subtypes. Using machine learning models, we can evaluate the 
+predictive power of these features in distinguishing between the subtypes.
+Furthermore, we can explore the association of methylation events with specific
+genetic mutations, providing insights into the regulatory mechanisms underlying
+each subtype.
+\subsubsection*{Methods}
+\textbf{Correlation of methylation and mutation features with cancer subtypes:}
+To determine the association of methylation and mutation features, 
+we will calculate the correlation between all the features. Formally, for each
+cancer subtype $c \in \{1, 2, 3, 4\}$, we calculate the Pearson correlation
+between each methylation feature $M_{i}$ and mutation feature $G_{i}$ with the
+subtype label $y_{c}$. 
+\medskip \\
+\textbf{Unsupervised clustering of methylation and mutation features:}
+Let $M$ be the matrix of methylation features, of shape $n_M \times m$, where $n_M$ is the number of samples with methylation signals and $m$ is the number of bins.
+Similarly, let $G$ be the matrix of mutation features, of shape $n_G \times m$, where $n_G$ is the number of samples with mutation signals. 
+To visualize groupings of samples based on these profiles,
+we apply UMAP to matrix $M$ and $G$ to reduce the dimensionality of the data to a 2D space.
+We can then plot the UMAP embeddings and color the points by tumor vs. normal status
+to see if there is a clear separation between the two groups.
+After filtering out normal samples, we can then color the points by cancer subtype to see if there is a clear separation between the subtypes.
+Finally, we can apply a similar analysis to the combined methylation and mutation features to see if the two modalities provide complementary information in distinguishing between the subtypes.
+\medskip \\
+\textbf{Supervised classification of cancer subtypes:}
+We will evaluate the performance of basic machine learning models in predicting the 
+breast cancer subtypes based on GEMINI-methylation features, GEMINI-mutation features, and a combination of both. 
+We first will apply a simple multinomial logistic regression model to predict the subtypes based on the methylation and mutation features, which will serve as a baseline model.
+The benefit of using a logistic regression model is that it is interpretable and can provide insights into the importance of each feature in predicting the subtypes.
+We will then evaluate more complex models, including random forests and neural networks to see if they can improve the predictive performance.
+
+
+\subsection*{Expected Results and Interpretation}
+We expect to find the methylation and mutation signals to have significant differences between the tumor and normal samples. This is expected as tumor samples are known
+to have hyper-methylation events and higher mutation frequencies compared to normal samples.
+We also expect to see differences in the methylation and mutation signals between the different cancer subtypes.
+Different subtypes of breast cancer are characterized by distinct genetic and 
+epigenetic profiles, and we expect these differences to be reflected in the methylation and mutation signals.
+We also expect to see a correlation between some methylation events and specific genetic mutations. Some mutations, particularly in promoter and enhancer regions, 
+affect the methylation patterns of nearby CpG sites.
+For the unsupervised clustering analysis, we expect to see a fairly 
+clear separation between the tumor and normal samples, and a fairly 
+clear separation between the different cancer subtypes. 
+Because different subtypes are characterized by different 
+genetic and epigenetic profiles, we expect these differences to be
+reflected in the UMAP embeddings for the corresponding feature sets. 
+For the supervised classification task, we hypothesize that combining
+the methylation and mutation features will improve the predictive performance
+because the two modalities should provide complementary information in categorizing
+the subtypes.
+
+
+
+\subsection*{Potential Pitfalls and Alternative Approaches}
+For Aim 1A, One of the primary challenges in collecting matched genetic and epigenetic data is
+having a sufficient yield and quality of cfDNA to perform both assays. 
+Without significant enrichment of cfDNA, it may be difficult to detect methylation
+signals and mutations in some samples. We chose the QIAamp Circulating Nucleic Acid Kit
+because it has been shown to have one of the highest yields of cfDNA compared to other
+methods. In the event that insufficient cfDNA is obtained, we will consider using
+PCR-based methods, such as methylation-specific PCR, to enrich for the methylation signalprior to sequencing and the generation of GEMINI-methylation and GEMINI-mutation features. 
+For Aim 1B, we may observe a lack of clear separation between the different cancer subtypes and consequently, the models may not perform well in predicting the subtypes. This could be due to overlapping biological characteristics, noise in cfDNA data, or the lack of sufficient discriminatory power in either feature set. Furthermore, the combined methylation and mutation features may introduce redundancy or noise, potentially degrading model performance instead of improving it. This could result in both unsupervised clustering and supervised classification failing to clearly differentiate subtypes.
+To address this potential pitfall, we will consider applying various denoising approaches, including feature selection and batch effect correction. We can also adjust the bin size adopted for the GEMINI-methylation and GEMINI-mutation features to reduce noise and redundancy.
+\newpage
+
+\bibliographystyle{plain}
+\bibliography{aims.bib}
+\nocite{*}
+\end{document}
+

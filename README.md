@@ -1,1 +1,1 @@
-# gcb5340-proposal
+# latex-template
